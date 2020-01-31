@@ -1,5 +1,5 @@
 # Procedural-Map-Generation
-Fall 2020 Graduation project for generating procedural maps on Unreal Engine 4 C++
+Fall 2020 Graduation project for generating procedural maps on Unreal Engine 4
 
 
 Project demo link: https://drive.google.com/drive/folders/1pw7GQH0C_wBumIJ6tGHPRRyqUktqXadP?usp=sharing
