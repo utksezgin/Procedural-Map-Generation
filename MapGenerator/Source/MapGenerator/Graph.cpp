@@ -1,6 +1,3 @@
-// TODO: REFACTORING
-
-
 #include "Graph.h"
 #include <stack>
 

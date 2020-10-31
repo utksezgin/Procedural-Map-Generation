@@ -76,7 +76,7 @@ class MAPGENERATOR_API ARandomMapGenerator : public AActor
 		UFUNCTION(BlueprintCallable)
 		FParameters getParameters() const{ return generatorParameters; }
 		UFUNCTION(BlueprintCallable)
-		void initParameters(FParameters parameters) { generatorParameters = parameters; }
+		void initParameters(const FParameters& parameters) { generatorParameters = parameters; }
 		UFUNCTION(BlueprintCallable)
 		int getLayoutArea();
 
@@ -99,11 +99,11 @@ class MAPGENERATOR_API ARandomMapGenerator : public AActor
 		void solvePointlessAreas();
 		void insertLayout();
 		void spawnEndPortal();
-		void spawnCorridor(FVector islandLocation1, FVector islandLocation2) const;
-		void spawnEvent(int eventNo, int rewardQuality, FVector islandLocation);
-		void spawnReward(int rewardTier, FVector islandLocation);
+		void spawnCorridor(const FVector& islandLocation1, const FVector& islandLocation2) const;
+		void spawnEvent(int eventNo, int rewardQuality, const FVector& islandLocation);
+		void spawnReward(int rewardTier, const FVector& islandLocation);
 		void populateLayout();
-		void spawnMonsters(int monsterCount, FVector islandLocation);
+		void spawnMonsters(int monsterCount, const FVector& islandLocation);
 	
 
 		uint8  minRectangleHeight	 { 1 };

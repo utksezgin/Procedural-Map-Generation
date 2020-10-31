@@ -18,8 +18,6 @@ void ARandomMapGenerator::BeginPlay()
 float ARandomMapGenerator::generateMap() {
 	float start = FPlatformTime::ToMilliseconds(FPlatformTime::Cycles());
 
-	// put code you want to time here.
-
 	if (createInitialLayout() == 0) {
 		UE_LOG(LogTemp, Warning, TEXT("Hello: %d"), generatorParameters.rectangleHeight);
 		int temp = 0;
@@ -293,7 +291,7 @@ AIsland* ARandomMapGenerator::spawnIsland(FTransform transform) const {
 	return nullptr;
 }
 
-void ARandomMapGenerator::spawnCorridor(FVector islandLocation1, FVector islandLocation2) const {
+void ARandomMapGenerator::spawnCorridor(const FVector& islandLocation1, const FVector& islandLocation2) const {
 	if(corridor){
 		int tileSize { 100 };
 		FTransform transform = FTransform(FRotator(0, 0, 0), FVector(0, 0, 0), FVector(1, 1, 1));
@@ -384,7 +382,7 @@ void ARandomMapGenerator::solvePointlessAreas(){
 	}
 }
 
-void ARandomMapGenerator::spawnEvent(int eventNo, int rewardQuality, FVector islandLocation){
+void ARandomMapGenerator::spawnEvent(int eventNo, int rewardQuality, const FVector& islandLocation){
 	FTransform transform = FTransform(FRotator(0, 0, 0), FVector(0, 0, 1), FVector(1, 1, 1));
 	transform.SetLocation(islandLocation + FVector(-200, 0, 50));
 	auto event = GetWorld()->SpawnActor<AGameEvent>(eventList[eventNo], transform);
@@ -397,7 +395,7 @@ void ARandomMapGenerator::spawnEvent(int eventNo, int rewardQuality, FVector isl
 		event->setReward(reward);
 }
 
-void ARandomMapGenerator::spawnReward(int rewardTier, FVector islandLocation) {
+void ARandomMapGenerator::spawnReward(int rewardTier, const FVector& islandLocation) {
 	FTransform transform = FTransform(FRotator(0, 0, 0), FVector(0, 0, 1), FVector(1, 1, 1));
 	transform.SetLocation(islandLocation + FVector(-200, 0, 50));
 	
@@ -426,7 +424,7 @@ void ARandomMapGenerator::populateLayout(){
 }
 
 
-void ARandomMapGenerator::spawnMonsters(int monsterCount, FVector islandLocation) {
+void ARandomMapGenerator::spawnMonsters(int monsterCount, const FVector& islandLocation) {
 	UE_LOG(LogTemp, Warning, TEXT("Monster Count: %d"), monsterCount);
 	FTransform transform = FTransform(FRotator(0, 0, 0), FVector(0, 0, 1), FVector(1, 1, 1));
 	transform.SetLocation(islandLocation + FVector(200, 0, 100));
